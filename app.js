@@ -2,6 +2,7 @@ const colors = document.getElementsByClassName("jsColor");
 const canvas = document.getElementById("jsCanvas");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
+const clearBtn = document.getElementById("jsClear");
 const saveBtn = document.getElementById("jsSave");
 const ctx = canvas.getContext("2d");
 
@@ -83,6 +84,11 @@ function handleClickSave() {
     image.click();
 }
 
+function handleClickClear() {
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
 if(canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", startPainting);
@@ -106,4 +112,8 @@ if(mode) {
 
 if(saveBtn) {
     saveBtn.addEventListener("click", handleClickSave);
+}
+
+if(clearBtn) {
+    clearBtn.addEventListener("click", handleClickClear);
 }
